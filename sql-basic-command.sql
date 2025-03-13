@@ -18,6 +18,7 @@ values
 ('12321321321','miswa','20','marketing');
 
 -- insert tanpa manggil kolom
+-- test perubahan untuk git
 insert into mahasiswa_new
 values
 ('','12321321321','miswa','20','JPA');
