@@ -62,7 +62,7 @@ on mahasiswa_join.nim = nilai_join.nim;
 CREATE TABLE barang (
     id_barang INT PRIMARY KEY,
     nama_barang VARCHAR(255)
-);
+);	
 
 CREATE TABLE merek (
     id_merek INT PRIMARY KEY,
@@ -82,8 +82,29 @@ INSERT INTO merek_join (id_merek, nama_merek) VALUES
     (2, 'Samsung');
     
 select * from barang_join;
-select * from merek_join;
+select * from merek_join;	
 
 select barang_join.nama_barang, merek_join.nama_merek
 from barang_join
 cross join merek_join;
+
+-- Demo Video Terakhir
+alter table mahasiswa_join
+add column status_kelulusan_join varchar(20);
+
+describe mahasiswa_join;
+
+select * from nilai_join;
+
+SET SQL_SAFE_UPDATES = 0;
+update mahasiswa_join inner join nilai_join		
+on mahasiswa_join.nim = nilai_join.nim
+set mahasiswa_join.status_kelulusan_join = "Lulus"
+where nilai_join.nilai >= 80; 	
+
+select * from nilai_join;
+
+update nilai_join set nilai='85' where nim='104';
+
+select * from mahasiswa_join;
+
