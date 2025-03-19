@@ -102,9 +102,14 @@ on mahasiswa_join.nim = nilai_join.nim
 set mahasiswa_join.status_kelulusan_join = "Lulus"
 where nilai_join.nilai >= 80; 	
 
+update mahasiswa_join inner join nilai_join		
+on mahasiswa_join.nim = nilai_join.nim
+set mahasiswa_join.status_kelulusan_join = null
+where nilai_join.nilai < 80; 	
+
 select * from nilai_join;
 
-update nilai_join set nilai='85' where nim='104';
+update nilai_join set nilai='65' where nim='104';
 
 select * from mahasiswa_join;
 
