@@ -78,3 +78,19 @@ select * from transaksi;
 select id_barang, jumlah_transaksi,total_transaksi, format(total_transaksi, 0) as total_transaksi_format
 from transaksi;
 
+-- Demo : Aggregate Function
+-- Count
+select count(*) as jumlah_perempuan from mahasiswa where jenis_kelamin = "Perempuan";
+
+-- Sum
+select sum(total_transaksi) as total_penjualan from transaksi;
+select sum(jumlah_transaksi) as total_transaksi from transaksi;
+
+select * from transaksi;
+
+-- Avg
+select avg(total_transaksi) as rata_rata_transaksi from transaksi;
+
+-- Min / Max
+select id_user, max(total_transaksi) as transaksi_tertinggi from transaksi;
+select min(total_transaksi) as transaksi_terendah from transaksi;
