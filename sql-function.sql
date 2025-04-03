@@ -94,3 +94,39 @@ select avg(total_transaksi) as rata_rata_transaksi from transaksi;
 -- Min / Max
 select id_user, max(total_transaksi) as transaksi_tertinggi from transaksi;
 select min(total_transaksi) as transaksi_terendah from transaksi;
+
+-- Demo : Date Function
+-- Datediff - selisih hari dari hari yang ada di dalam kurung
+select nama_depan, tanggal_lahir, datediff(tanggal_lahir,'2000-01-01') as selisi_hari from mahasiswa;
+
+-- Timestampdiff
+select nama_depan, tanggal_lahir, timestampdiff(HOUR, tanggal_lahir, '2000-01-01') as selisih from mahasiswa;
+select nama_depan, tanggal_lahir, timestampdiff(YEAR, tanggal_lahir, '2000-01-01') as selisih from mahasiswa;
+select nama_depan, tanggal_lahir, timestampdiff(MONTH, tanggal_lahir, '2000-01-01') as selisih from mahasiswa;
+select nama_depan, tanggal_lahir, timestampdiff(DAY, tanggal_lahir, '2000-01-01') as selisih from mahasiswa;
+
+-- Extract 
+select nama_depan, tanggal_lahir, extract(DAY from tanggal_lahir) as tahun from mahasiswa;
+
+-- Date Add
+select nama_depan, tanggal_lahir, date_add(tanggal_lahir, INTERVAL 30 DAY) 
+as selisih_30_hari from mahasiswa;
+
+-- Demo : Conditional Function
+-- IF 
+select nama_depan, usia, IF(usia <= 20, 'Remaja', 'Dewasa') as kategori_usia from mahasiswa;
+
+-- CASE, WHEN
+select nama_depan, usia, 
+CASE
+	WHEN usia <= 19 THEN 'REMAJA'
+	WHEN usia >= 20 AND usia <= 21 THEN 'REMAJA to Dewasa'
+	ELSE 'DEWASA'
+END as kategori_usia
+from mahasiswa;
+
+-- IFNULL
+SET SQL_SAFE_UPDATES = 0;
+update mahasiswa set alamat=NULL where nim=101;
+select nama_depan, IFNULL(alamat, 'Alamat tidak tersedia') as alamat from mahasiswa;
+select * from mahasiswa;
